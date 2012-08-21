@@ -43,13 +43,10 @@ class opCsvExportTask extends sfDoctrineBaseTask
       echo $this->getHeader()."\n";
     }
 
-    $table = Doctrine::getTable('Member');
-
-    $memberCount = $table->createQuery()->select('max(id)')->execute(array(), Doctrine::HYDRATE_NONE);
-    $memberCount = $memberCount[0][0];
-
     $from = $options['from'];
     $to = $options['to'];
+
+    $table = Doctrine::getTable('Member');
 
     $query = $table->createQuery()->select('id')->where('? <= id', $from);
     if (!is_null($to))
