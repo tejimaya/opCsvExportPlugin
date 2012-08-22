@@ -59,24 +59,29 @@ class opCsvExportTask extends sfDoctrineBaseTask
     {
       $member = $table->find($memberId[0]);
       $line = array();
-      $line[] = $member->getId();
-      $line[] = $member->getName();
-      $line[] = $member->getCreatedAt();
-      $line[] = $member->getInviteMemberId();
-      $line[] = $member->getConfig('lastLogin');
-      $line[] = $member->getConfig('pc_address');
-      $line[] = $member->getConfig('mobile_address');
+      $line[] = $this->getString($member->getId());
+      $line[] = $this->getString($member->getName());
+      $line[] = $this->getString($member->getCreatedAt());
+      $line[] = $this->getString($member->getInviteMemberId());
+      $line[] = $this->getString($member->getConfig('lastLogin'));
+      $line[] = $this->getString($member->getConfig('pc_address'));
+      $line[] = $this->getString($member->getConfig('mobile_address'));
       $memberImages = $member->getMemberImage();
       for ($i = 0; $i < 3; ++$i)
       {
-        $line[] = $memberImages[$i]->getFile();
+        $line[] = $this->getString($memberImages[$i]->getFile());
       }
       foreach ($member->getProfiles() as $profile)
       {
-        $line[] = $profile->getValue();
+        $line[] = $this->getString($profile->getValue());
       }
       echo '"'.implode('","', $line)."\"\n";
     }
+  }
+
+  private function getString($str)
+  {
+    return is_null($str) ? '' : $str;
   }
 
   private function getHeader()
