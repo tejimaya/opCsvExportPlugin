@@ -71,9 +71,9 @@ class opCsvExportTask extends sfDoctrineBaseTask
       {
         $line[] = $this->getString($memberImages[$i]->getFile());
       }
-      foreach ($member->getProfiles() as $profile)
+      foreach (Doctrine::getTable('Profile')->retrievesAll() as $profile)
       {
-        $line[] = $this->getString($profile->getValue());
+        $line[] = $this->getString($member->getProfile($profile->getName()));
       }
       echo '"'.implode('","', $line)."\"\n";
     }
@@ -81,7 +81,7 @@ class opCsvExportTask extends sfDoctrineBaseTask
 
   private function getString($str)
   {
-    return is_null($str) ? '' : $str;
+    return is_null($str) || false === $str ? '' : $str;
   }
 
   private function getHeader()
