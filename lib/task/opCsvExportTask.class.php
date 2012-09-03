@@ -86,7 +86,7 @@ class opCsvExportTask extends sfDoctrineBaseTask
 
   private function getHeader()
   {
-    $result = array('id','name','created_at','invite_member_id','lastLogin','pc_address','mobile_address');
+    $result = array('id', 'name', 'created_at', 'invite_member_id', 'lastLogin', 'pc_address', 'mobile_address');
 
     for ($i = 1; $i <= 3; ++$i)
     {
