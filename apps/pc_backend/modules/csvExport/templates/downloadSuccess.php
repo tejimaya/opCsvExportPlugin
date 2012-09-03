@@ -1,5 +1,5 @@
 <h2>メンバーCSV ダウンロード</h2>
-<form action="csvExport/download" method="POST">
+<form action="<?php echo url_for('@csvExport_download') ?>" method="POST">
 <table>
 <?php echo $form ?>
 </table>

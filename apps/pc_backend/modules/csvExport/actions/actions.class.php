@@ -16,29 +16,30 @@
  */
 class csvExportActions extends sfActions
 {
-  public function executeIndex()
-  {
-    $this->form = new opCsvExportForm();
-  }
-
   public function executeDownload(sfWebRequest $request)
   {
-    $form = new opCsvExportForm();
+    $this->form = new opCsvExportForm();
 
-    $form->bind($request->getParameter('opCsvExport'));
-
-    $this->forward404If(!$form->isValid());
-
-    $memberCsvList = new opMemberCsvList($form->getValue('from'), $form->getValue('to'));
-
-    $csvStr = opMemberCsvList::getHeader()."\n";
-    foreach ($memberCsvList as $memberCsv)
+    if ($request->isMethod(sfRequest::POST))
     {
-      $csvStr .= $memberCsv."\n";
+      $this->form->bind($request->getParameter('opCsvExport'));
+
+      if (!$this->form->isValid())
+      {
+        return sfView::SUCCESS;
+      }
+
+      $memberCsvList = new opMemberCsvList($this->form->getValue('from'), $this->form->getValue('to'));
+
+      $csvStr = opMemberCsvList::getHeader()."\n";
+      foreach ($memberCsvList as $memberCsv)
+      {
+        $csvStr .= $memberCsv."\n";
+      }
+
+      opToolkit::fileDownload('member.csv', $csvStr);
+
+      return sfView::NONE;
     }
-
-    opToolkit::fileDownload('member.csv', $csvStr);
-
-    return sfView::NONE;
   }
 }
