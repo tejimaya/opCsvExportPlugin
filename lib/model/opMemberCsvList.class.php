@@ -23,10 +23,10 @@ class opMemberCsvList implements Iterator
 
   public function __construct($from, $to)
   {
-    $query = Doctrine::getTable('Member')->createQuery()->select('id')->where('? <= id', $this->from);
-    if (!is_null($this->to))
+    $query = Doctrine::getTable('Member')->createQuery()->select('id')->where('? <= id', $from);
+    if (!is_null($to))
     {
-      $query = $query->andWhere('id < ?', $this->to);
+      $query = $query->andWhere('id < ?', $to);
     }
 
     $this->memberIds = $query->execute(array(), Doctrine::HYDRATE_NONE);
