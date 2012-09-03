@@ -1,0 +1,19 @@
+<?xml version="1.0" ?>
+<xliff version="1.0">
+  <file orginal="global" source-language="en" datatype="plaintext">
+    <body>
+      <trans-unit id="1">
+        <source>Download Csv File</source>
+        <target>CSV ファイルダウンロード</target>
+      </trans-unit>
+      <trans-unit id="2">
+        <source>Member CSV download</source>
+        <target>メンバーCSV ダウンロード</target>
+      </trans-unit>
+      <trans-unit id="3">
+        <source>Download</source>
+        <target>ダウンロード</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
