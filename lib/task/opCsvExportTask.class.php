@@ -12,7 +12,7 @@
 /**
  * opCsvExportTask
  *
- * @package    opCsvExport
+ * @package    opCsvExportPluign
  * @subpackage task
  * @author     Yuya Watanabe <watanabe@tejimaya.com>
  */

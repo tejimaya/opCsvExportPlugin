@@ -12,11 +12,10 @@
 /**
  * opMemberCsvList
  *
- * @package    opMemberCsvList
+ * @package    opCsvExportPlugin
  * @subpackage model
  * @author     Yuya Watanabe <watanabe@tejimaya.com>
  */
-
 class opMemberCsvList implements Iterator
 {
   private $memberIds;
