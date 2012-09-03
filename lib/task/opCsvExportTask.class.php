@@ -38,7 +38,7 @@ class opCsvExportTask extends sfDoctrineBaseTask
   {
     new sfDatabaseManager($this->configuration);
 
-    if ('true' === $options['header'])
+    if ('true' == $options['header'])
     {
       echo $this->getHeader()."\n";
     }
