@@ -1,0 +1,3 @@
+csvExport_download:
+  url: /csvExport/download
+  param: { module: csvExport, action: download }
