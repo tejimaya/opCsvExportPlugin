@@ -13,6 +13,7 @@
  * opCsvExportTask
  *
  * @package    opCsvExport
+ * @subpackage task
  * @author     Yuya Watanabe <watanabe@tejimaya.com>
  */
 class opCsvExportTask extends sfDoctrineBaseTask
@@ -40,64 +41,13 @@ class opCsvExportTask extends sfDoctrineBaseTask
 
     if ('true' == $options['header'])
     {
-      echo $this->getHeader()."\n";
+      echo opMemberCsvList::getHeader()."\n";
     }
 
-    $from = $options['from'];
-    $to = $options['to'];
-
-    $table = Doctrine::getTable('Member');
-
-    $query = $table->createQuery()->select('id')->where('? <= id', $from);
-    if (!is_null($to))
+    $memberCsvList = new opMemberCsvList($options['from'], $options['to']);
+    foreach($memberCsvList as $memberCsv)
     {
-      $query = $query->andWhere('id < ?', $to);
+      echo $memberCsv."\n";
     }
-    $memberIds = $query->execute(array(), Doctrine::HYDRATE_NONE);
-
-    foreach($memberIds as $memberId)
-    {
-      $member = $table->find($memberId[0]);
-      $line = array();
-      $line[] = $this->getString($member->getId());
-      $line[] = $this->getString($member->getName());
-      $line[] = $this->getString($member->getCreatedAt());
-      $line[] = $this->getString($member->getInviteMemberId());
-      $line[] = $this->getString($member->getConfig('lastLogin'));
-      $line[] = $this->getString($member->getConfig('pc_address'));
-      $line[] = $this->getString($member->getConfig('mobile_address'));
-      $memberImages = $member->getMemberImage();
-      for ($i = 0; $i < 3; ++$i)
-      {
-        $line[] = $this->getString($memberImages[$i]->getFile());
-      }
-      foreach (Doctrine::getTable('Profile')->retrievesAll() as $profile)
-      {
-        $line[] = $this->getString($member->getProfile($profile->getName()));
-      }
-      echo '"'.implode('","', $line)."\"\n";
-    }
-  }
-
-  private function getString($str)
-  {
-    return is_null($str) || false === $str ? '' : $str;
-  }
-
-  private function getHeader()
-  {
-    $result = array('id', 'name', 'created_at', 'invite_member_id', 'lastLogin', 'pc_address', 'mobile_address');
-
-    for ($i = 1; $i <= 3; ++$i)
-    {
-      $result[] = 'memberImage'.$i;
-    }
-
-    foreach (Doctrine::getTable('Profile')->retrievesAll() as $profile)
-    {
-      $result[] = $profile->getName();
-    }
-
-    return '"'.implode('","', $result).'"';
   }
 }
