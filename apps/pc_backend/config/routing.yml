@@ -1,3 +1,7 @@
+csvExport_index:
+  url: /csvExport
+  param: { module: csvExport, action: index }
+
 csvExport_download:
   url: /csvExport/download
   param: { module: csvExport, action: download }

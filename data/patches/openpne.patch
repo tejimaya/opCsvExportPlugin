@@ -1,0 +1,9 @@
+diff --git a/apps/pc_backend/modules/member/templates/_submenu.php b/apps/pc_backend/modules/member/templates/_submenu.php
+index 016a9ce..5a64d1e 100644
+--- a/apps/pc_backend/modules/member/templates/_submenu.php
++++ b/apps/pc_backend/modules/member/templates/_submenu.php
+@@ -1,3 +1,4 @@
+ <li><?php echo link_to(__('Members'), 'member/list') ?></li>
+ <li><?php echo link_to(__('Invite Members'), 'member/invite') ?></li>
+ <li><?php echo link_to(__('Blacklist Management'), 'member/blacklist') ?></li>
++<li><?php echo link_to(__('Download Csv File'), '@csvExport_index') ?></li>
