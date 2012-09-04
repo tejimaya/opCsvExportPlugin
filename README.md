@@ -28,7 +28,7 @@ sns.example.com というドメインで SNS を動かしているとき，下�
 
 管理画面「メンバ管理」でメニューを表示させたい場合は下記コマンドでパッチを適用してください．
 
-    $ patch -p1 < data/patches/op36.patch
+    $ patch -p1 < plugins/opCsvExportPlugin/data/patches/op36.patch
 
 # How to Use (Task)
 
