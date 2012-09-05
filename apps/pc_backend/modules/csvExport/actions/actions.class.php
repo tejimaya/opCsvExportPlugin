@@ -37,6 +37,10 @@ class csvExportActions extends sfActions
         $csvStr .= $memberCsv."\n";
       }
 
+      if( 'UTF-8' != $this->form->getValue('encode') )
+      {
+        $csvStr = mb_convert_encoding($csvStr, $this->form->getValue('encode'), 'UTF-8');
+      }
       opToolkit::fileDownload('member.csv', $csvStr);
 
       return sfView::NONE;
