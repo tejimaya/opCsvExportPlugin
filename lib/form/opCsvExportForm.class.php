@@ -25,9 +25,9 @@ class opCsvExportForm extends sfForm
     $this->setWidget('to', new sfWidgetFormInput());
     $this->setValidator('to', new sfValidatorNumber());
 
-    $option_encode = array('UTF-8'=>'UTF-8', 'SJIS-win'=>'SJIS');
-    $this->setWidget('encode', new sfWidgetFormSelect(array('choices' => $option_encode)));
-    $this->setValidator('encode', new sfValidatorChoice(array('required' => true, 'choices' => array_keys($option_encode))));
+    $optionEncode = array('UTF-8'=>'UTF-8', 'SJIS-win'=>'SJIS');
+    $this->setWidget('encode', new sfWidgetFormSelect(array('choices' => $optionEncode)));
+    $this->setValidator('encode', new sfValidatorChoice(array('required' => true, 'choices' => array_keys($optionEncode))));
 
     $this->validatorSchema->setPostValidator(new sfValidatorCallback(array(
       'callback' => array($this, 'checkFromTo'),
