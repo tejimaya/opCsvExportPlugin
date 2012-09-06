@@ -25,6 +25,24 @@ class opCsvExportForm extends sfForm
     $this->setWidget('to', new sfWidgetFormInput());
     $this->setValidator('to', new sfValidatorNumber());
 
+    $optionEncode = array('UTF-8' => 'UTF-8', 'SJIS-win' => 'SJIS');
+    $this->setWidget('encode', new sfWidgetFormSelect(array('choices' => $optionEncode)));
+    $this->setValidator('encode', new sfValidatorChoice(array('required' => true, 'choices' => array_keys($optionEncode))));
+
+    $this->getValidatorSchema()->setPostValidator(new sfValidatorCallback(array(
+      'callback' => array($this, 'checkFromTo'),
+    )));
+    
     $this->getWidgetSchema()->setNameFormat('opCsvExport[%s]');
+  }
+  
+  public function checkFromTo ($validator, $values)
+  {
+    if ($values['from'] > $values['to'])
+    {
+      throw new sfValidatorError($validator, 'ToにはFromより大きい値を入力してください。');
+    }
+    
+    return $values;
   }
 }
