@@ -21,6 +21,9 @@ sns.example.com というドメインで SNS を動かしているとき，下�
 <tr>
 <td>to</td><td>メンバID 終了位置 整数値 (inclusive)</td>
 </tr>
+<tr>
+<td>Encode</td><td>ダウンロードするファイルのエンコーディング UTF-8 or SJIS</td>
+</tr>
 </table>
 
 
