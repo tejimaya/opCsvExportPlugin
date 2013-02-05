@@ -13,7 +13,8 @@
  *
  * @package    opCsvExportPlugin
  * @author     Yuya Watanabe <watanabe@tejimaya.com>
- */
+ * @author     Kaoru Nishizoe <nishizoe@tejimaya.com>
+ *  */
 class csvExportActions extends sfActions
 {
   public function executeDownload(sfWebRequest $request)
@@ -29,9 +30,10 @@ class csvExportActions extends sfActions
         return sfView::SUCCESS;
       }
 
-      $memberCsvList = new opMemberCsvList($this->form->getValue('from'), $this->form->getValue('to'));
+      $csvList = new opMemberCsvList();
+      $memberCsvList = $csvList->getMemberCsvList($this->form->getValue('from'), $this->form->getValue('to'));
 
-      $csvStr = opMemberCsvList::getHeader()."\n";
+      $csvStr = '';
       foreach ($memberCsvList as $memberCsv)
       {
         $csvStr .= $memberCsv."\n";
@@ -41,6 +43,7 @@ class csvExportActions extends sfActions
       {
         $csvStr = mb_convert_encoding($csvStr, $this->form->getValue('encode'), 'UTF-8');
       }
+
       opToolkit::fileDownload('member.csv', $csvStr);
 
       return sfView::NONE;
