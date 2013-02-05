@@ -172,7 +172,7 @@ class opMemberCsvList
     }
     else
     {
-      $select .= ' where p.level != 0';
+      $select .= ' where p.level <> 0';
     }
 
     $select .= ' and p.member_id >= ?';
