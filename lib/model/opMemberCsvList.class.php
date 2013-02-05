@@ -89,15 +89,15 @@ class opMemberCsvList
     $select .= ', c.value as c_value';
     $select .= ', c.value_datetime as c_value_datetime';
     $select .= ' from member_config c';
-    $select .= ' where c.id >= ?';
+    $select .= ' where c.member_id >= ?';
     $parameters[] = $from;
 
     if (!is_null($to))
     {
-      $select .= ' and c.id <= ?';
+      $select .= ' and c.member_id <= ?';
       $parameters[] = $to;
     }
-    $select .= ' order by c.id';
+    $select .= ' order by c.member_id, c.id';
 
     $con = Doctrine_Manager::connection();
     $memberConfigList = $con->fetchAll($select, $parameters);
@@ -105,12 +105,12 @@ class opMemberCsvList
     $memberConfigDatas = array();
     foreach ($memberConfigList as $memberConfig)
     {
-      $id = $memberConfig['c_id'];
-      if (!isset($memberConfigDatas[$id]))
+      $memberId = $memberConfig['c_member_id'];
+      if (!isset($memberConfigDatas[$memberId]))
       {
-        $memberConfigDatas[$id] = array();
+        $memberConfigDatas[$memberId] = array();
       }
-      $memberConfigDatas[$id][] = $memberConfig;
+      $memberConfigDatas[$memberId][] = $memberConfig;
     }
 
     return $memberConfigDatas;
@@ -277,7 +277,14 @@ class opMemberCsvList
       $_configData = array();
       foreach ($configDatas as $configData)
       {
-        $_configData[$configData['c_name']] = $configData['c_value'];
+        if ('lastLogin' == $configData['c_name'])
+        {
+          $_configData[$configData['c_name']] = $configData['c_value_datetime'];
+        }
+        else
+        {
+          $_configData[$configData['c_name']] = $configData['c_value'];
+        }
       }
       $data['config_data'] = $_configData;
 

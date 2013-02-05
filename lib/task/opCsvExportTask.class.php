@@ -37,15 +37,17 @@ class opCsvExportTask extends sfDoctrineBaseTask
 
   protected function execute($arguments = array(), $options = array())
   {
-    new sfDatabaseManager($this->configuration);
+    sfContext::createInstance($this->configuration);
 
-    if ('true' == $options['header'])
+    $csvList = new opMemberCsvList();
+    $memberCsvList = $csvList->getMemberCsvList($options['from'], $options['to']);
+
+    $csvStr = '';
+    if ('true' != $options['header'])
     {
-      echo opMemberCsvList::getHeader()."\n";
+      array_shift($memberCsvList);
     }
-
-    $memberCsvList = new opMemberCsvList($options['from'], $options['to']);
-    foreach($memberCsvList as $memberCsv)
+    foreach ($memberCsvList as $memberCsv)
     {
       echo $memberCsv."\n";
     }
