@@ -1,0 +1,93 @@
+Member:
+  member1:
+    id: 1
+    name: "Ohira1"
+    is_active: true
+  member2:
+    id: 2
+    name: "Ohira2"
+    is_active: true
+  member3:
+    id: 3
+    name: "Ohira3"
+    is_active: true
+  member4:
+    id: 4
+    name: "Ohira4"
+    is_active: true
+
+MemberProfile:
+  member1_profile_sex:
+    value: "Man"
+    public_flag: 1
+    Member: member1
+    Profile: profile_sex
+
+  member1_profile_birthday:
+    value: "1988-04-23"
+    public_flag: 1
+    Member: member1
+    Profile: profile_birthday
+
+  member1_profile_region:
+    value: "Tokyo"
+    public_flag: 1
+    Member: member1
+    Profile: profile_region
+
+  member1_profile_self_intro:
+    value: "\"よ, ろ, し, く\" お願いします!!!"
+    public_flag: 1
+    Member: member1
+    Profile: profile_self_intro
+
+  member2_profile_sex:
+    value: "Man"
+    public_flag: 2
+    Member: member2
+    Profile: profile_sex
+
+  member2_profile_birthday:
+    value: "2000-01-01"
+    public_flag: 2
+    Member: member2
+    Profile: profile_birthday
+
+  member2_profile_region:
+    value: "Shimane"
+    public_flag: 1
+    Member: member2
+    Profile: profile_region
+
+  member2_profile_self_intro:
+    value: |
+      よ
+      ろ
+      し
+      く
+      お願いします!!!
+    public_flag: 1
+    Member: member2
+    Profile: profile_self_intro
+
+MemberConfig:
+<?php for ($i = 1; $i <= 4; $i++): ?>
+  member<?php echo $i ?>_pc_address:
+    name: "pc_address"
+    value: "\"o-hira<?php echo $i ?>\"@example.com"
+    Member: member<?php echo $i . "\n" ?>
+  member<?php echo $i ?>_mobile_address:
+    name: "mobile_address"
+    value: "o-hira-mobile<?php echo $i ?>@example.com"
+    Member: member<?php echo $i . "\n" ?>
+  member<?php echo $i ?>_password:
+    name: "password"
+    value: "<?php echo md5('password') ?>"
+    Member: member<?php echo $i . "\n" ?>
+  member<?php echo $i ?>_lastLogin:
+<?php $datetime = date('Y-m-d H:i:s', strtotime('-'.$i.' day')) ?>
+    name: "lastLogin"
+    value: "<?php echo $datetime ?>"
+    value_datetime: "<?php echo $datetime ?>"
+    Member: member<?php echo $i . "\n" ?>
+<?php endfor; ?>
