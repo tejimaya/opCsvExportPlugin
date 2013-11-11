@@ -34,10 +34,10 @@ class opMemberCsvList
     self::SJIS => 'SJIS',
   );
 
-  private $profileList = array();
-
   // default UTF-8.
   private $usedEncode = self::UTF8;
+
+  private $profileList = array();
 
   public function __construct()
   {
