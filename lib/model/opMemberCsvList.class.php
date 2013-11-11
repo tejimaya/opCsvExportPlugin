@@ -424,7 +424,7 @@ class opMemberCsvList
       $str
     );
 
-    if (preg_match(sprintf('/[,\r\n%s]/', preg_quote($this->enclose)), $value))
+    if (preg_match(sprintf('/[,\r\n%s]/', preg_quote($this->enclose, '/')), $value))
     {
       // Escape enclose char.
       $value = str_replace($this->enclose, $this->escape.$this->enclose, $value);
