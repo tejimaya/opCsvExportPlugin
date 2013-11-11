@@ -31,17 +31,13 @@ class csvExportActions extends sfActions
       }
 
       $csvList = new opMemberCsvList();
+      $csvList->setEncode($this->form->getValue('encode'));
       $memberCsvList = $csvList->getMemberCsvList($this->form->getValue('from'), $this->form->getValue('to'));
 
       $csvStr = '';
       foreach ($memberCsvList as $memberCsv)
       {
         $csvStr .= $memberCsv;
-      }
-
-      if( 'UTF-8' != $this->form->getValue('encode') )
-      {
-        $csvStr = mb_convert_encoding($csvStr, $this->form->getValue('encode'), 'UTF-8');
       }
 
       opToolkit::fileDownload('member.csv', $csvStr);
