@@ -1,3 +1,7 @@
 csvExport_download:
-  url: /csvExport/download
+  url: /monitoring/csvExport/download
   param: { module: csvExport, action: download }
+
+csvExport_no_default:
+  url: /csvExport/*
+  param: { module: default, action: error }

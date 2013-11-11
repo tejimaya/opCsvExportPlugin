@@ -7,7 +7,7 @@ SNS 内メンバのデータを csv 形式で出力する OpenPNE のプラグ�
 
 sns.example.com というドメインで SNS を動かしているとき，下記のようなURLにアクセスしてください．
 
-    http://sns.exmaple.com/pc_backend.php/csvExport/download
+    http://sns.exmaple.com/pc_backend.php/monitoring/csvExport/download
 
 フォームに必要な情報を記入して「ダウンロード」ボタンをクリックします．
 
@@ -28,10 +28,6 @@ sns.example.com というドメインで SNS を動かしているとき，下�
 
 
 ## Useful way to make easy to access
-
-管理画面「メンバ管理」でメニューを表示させたい場合は下記コマンドでパッチを適用してください．
-
-    $ patch -p1 < plugins/opCsvExportPlugin/data/patches/op36.patch
 
 # How to Use (Task)
 

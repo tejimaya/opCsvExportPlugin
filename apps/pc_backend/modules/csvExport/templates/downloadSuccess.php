@@ -1,3 +1,7 @@
+<?php slot('submenu') ?>
+<?php include_component('monitoring', 'submenu') ?>
+<?php end_slot() ?>
+
 <h2><?php echo __('Member CSV download') ?></h2>
 <form action="<?php echo url_for('@csvExport_download') ?>" method="POST">
 <table>
