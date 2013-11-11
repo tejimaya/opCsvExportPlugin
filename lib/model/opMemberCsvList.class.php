@@ -37,8 +37,11 @@ class opMemberCsvList
   // default UTF-8.
   private $usedEncode = self::UTF8;
 
+  private $profileList = array();
+
   public function __construct()
   {
+    $this->profileList = Doctrine_Core::getTable('Profile')->retrievesAll();
   }
 
   public function getMemberCsvList($from, $to)
@@ -261,19 +264,16 @@ class opMemberCsvList
       $columnNames[] = 'memberImage'.$i;
     }
 
-    $presetList = opToolkit::getPresetProfileList();
-    $profileList = Doctrine::getTable('Profile')->retrievesAll();
-    foreach ($profileList as $profile)
+    foreach ($this->profileList as $profile)
     {
-      if (0 === strpos($profile['name'], 'op_preset_'))
+      if ($profile->isPreset())
       {
-        $columnNames[] = sfContext::getInstance()->getI18n()->__($presetList[$profile->getRawPresetName()]['Caption']);
+        $presetConfig = $profile->getPresetConfig();
+        $columnNames[] = sfContext::getInstance()->getI18n()->__($presetConfig['Caption']);
       }
       else
       {
-        $profileI18n = $profile->Translation[sfContext::getInstance()->getUser()->getCulture()]->toArray();
-        $profileWithI18n = $profile->toArray() + $profileI18n;
-        $columnNames[] = $profileWithI18n['caption'];
+        $columnNames[] = $profile->getCaption();
       }
     }
 
@@ -376,7 +376,6 @@ class opMemberCsvList
 
     $memberCsvDatas = array();
     $memberCsvDatas[] = $header;
-    $profileList = Doctrine::getTable('Profile')->retrievesAll();
     foreach ($members as $member)
     {
       $line = array();
@@ -407,7 +406,7 @@ class opMemberCsvList
         }
         else
         {
-          foreach ($profileList as $profile)
+          foreach ($this->profileList as $profile)
           {
             $profileId = $profile['id'];
             if (isset($value['p_'.$profileId]))
