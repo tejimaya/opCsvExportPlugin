@@ -26,6 +26,17 @@ class opMemberCsvList
     $escape          = '"',
     $enclose         = '"';
 
+  const UTF8 = 'UTF-8';
+  const SJIS = 'SJIS-win';
+
+  static private $encodes = array(
+    self::UTF8 => 'UTF-8',
+    self::SJIS => 'SJIS',
+  );
+
+  // default UTF-8.
+  private $usedEncode = self::UTF8;
+
   public function __construct()
   {
   }
@@ -438,6 +449,25 @@ class opMemberCsvList
 
   private function getCsvLine(Array $array)
   {
-    return implode($this->fieldsTerminate, $array).$this->lineTerminate;
+    $line = implode($this->fieldsTerminate, $array).$this->lineTerminate;
+    if (self::UTF8 !== $this->usedEncode)
+    {
+      $line = mb_convert_encoding($line, $this->usedEncode, 'UTF-8');
+    }
+
+    return $line;
+  }
+
+  public static function getEncodes()
+  {
+    return self::$encodes;
+  }
+
+  public function setEncode($encode)
+  {
+    if (isset(self::$encodes[$encode]))
+    {
+      $this->usedEncode = $encode;
+    }
   }
 }

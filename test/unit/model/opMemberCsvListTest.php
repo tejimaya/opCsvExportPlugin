@@ -8,7 +8,7 @@ if (!sfContext::hasInstance('pc_backend') && $configuration)
   sfContext::createInstance($configuration, $app);
 }
 
-$t = new lime_test(3);
+$t = new lime_test(6);
 
 $t->diag('opMemberCsvList::getMemberCsvList()');
 
@@ -63,5 +63,17 @@ $csvLineRegex2 = <<<EOT
 \\r\\n$/x
 EOT;
 $t->like($csv[2], $csvLineRegex2, 'check escaped line terminate.');
+
+$t->is(mb_detect_encoding($csv[0].$csv[1].$csv[2].$csv[3].$csv[4], 'UTF-8', true), true, 'check encording. (default), return UTF-8');
+
+$csvList->setEncode('UTF-32');
+$csv = $csvList->getMemberCsvList(1, 10000);
+
+$t->is(mb_detect_encoding($csv[0].$csv[1].$csv[2].$csv[3].$csv[4], 'UTF-8', true), true, 'check encording. (UTF-32) - undefined encoding, return UTF-8');
+
+$csvList->setEncode('SJIS-win');
+$csv = $csvList->getMemberCsvList(1, 10000);
+
+$t->is(mb_detect_encoding($csv[0].$csv[1].$csv[2].$csv[3].$csv[4], 'SJIS-win', true), true, 'check encording. (SJIS-win), return SJIS-win');
 
 $conn->rollback();
