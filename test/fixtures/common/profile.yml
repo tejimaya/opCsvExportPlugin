@@ -1,0 +1,1 @@
+<?php include(dirname(__FILE__).'/../../../../../data/fixtures/001_import_profile.yml') ?>

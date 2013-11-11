@@ -1,0 +1,31 @@
+File:
+  dummy_file1:
+    name: "dummy_file1"
+    type: "image/png"
+    original_filename: "dummy.png"
+    FileBin:
+      bin: ~
+  dummy_file2:
+    name: "dummy_file2"
+    type: "image/jpeg"
+    original_filename: "dummy.jpg"
+    FileBin:
+      bin: ~
+  dummy_file3:
+    name: "dummy_file3"
+    type: "text/plain"
+    original_filename: "dummy.txt"
+    FileBin:
+      bin: ~
+
+MemberImage:
+  first_member_image1:
+    is_primary: 1
+    Member: member1
+    File: dummy_file3
+  first_member_image2:
+    Member: member1
+    File: dummy_file2
+  second_member_image1:
+    Member: member1
+    File: dummy_file1

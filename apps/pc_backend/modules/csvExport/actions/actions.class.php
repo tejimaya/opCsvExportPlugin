@@ -36,7 +36,7 @@ class csvExportActions extends sfActions
       $csvStr = '';
       foreach ($memberCsvList as $memberCsv)
       {
-        $csvStr .= $memberCsv."\n";
+        $csvStr .= $memberCsv;
       }
 
       if( 'UTF-8' != $this->form->getValue('encode') )
