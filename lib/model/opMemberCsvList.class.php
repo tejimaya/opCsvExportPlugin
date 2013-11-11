@@ -19,6 +19,13 @@
  */
 class opMemberCsvList
 {
+  private
+    $lineTerminate   = "\r\n",
+    $recordEndOfLine = "\r\n",
+    $fieldsTerminate = ',',
+    $escape          = '"',
+    $enclose         = '"';
+
   public function __construct()
   {
   }
@@ -40,7 +47,7 @@ class opMemberCsvList
 
   private function getString($str)
   {
-    return is_null($str) || false === $str ? '' : $str;
+    return is_null($str) || false === $str ? '' : $this->getConvertStrToCsv($str);
   }
 
   private function getMember($from, $to)
@@ -259,7 +266,7 @@ class opMemberCsvList
       }
     }
 
-    return '"'.implode('","', $columnNames).'"';
+    return $this->getCsvLine($columnNames);
   }
 
   private function makeCsvList($memberList, $memberConfigList, $memberImageList, $memberProfileRootList, $memberProfileList, $profileOptionTranslationList, $header)
@@ -403,9 +410,34 @@ class opMemberCsvList
           }
         }
       }
-      $memberCsvDatas[] = '"'.implode('","', $line).'"';
+      $memberCsvDatas[] = $this->getCsvLine($line);
     }
 
     return $memberCsvDatas;
+  }
+
+  private function getConvertStrToCsv($str)
+  {
+    $value = str_replace(
+      array("\r\n", "\r", "\n"), // replace target.
+      array("\n", "\n", $this->recordEndOfLine), // replace to.
+      $str
+    );
+
+    if (preg_match(sprintf('/[,\r\n%s]/', preg_quote($this->enclose)), $value))
+    {
+      // Escape enclose char.
+      $value = str_replace($this->enclose, $this->escape.$this->enclose, $value);
+
+      // Escape comma and end of line.
+      return $this->enclose.$value.$this->enclose;
+    }
+
+    return $value;
+  }
+
+  private function getCsvLine(Array $array)
+  {
+    return implode($this->fieldsTerminate, $array).$this->lineTerminate;
   }
 }

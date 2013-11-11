@@ -49,7 +49,7 @@ class opCsvExportTask extends sfDoctrineBaseTask
     }
     foreach ($memberCsvList as $memberCsv)
     {
-      echo $memberCsv."\n";
+      echo $memberCsv;
     }
   }
 }
