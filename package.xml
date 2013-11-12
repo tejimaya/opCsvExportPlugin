@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package packagerversion="1.9.0" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0
+    http://pear.php.net/dtd/tasks-1.0.xsd
+    http://pear.php.net/dtd/package-2.0
+    http://pear.php.net/dtd/package-2.0.xsd">
+ <name>opCsvExportPlugin</name>
+ <channel>plugins.openpne.jp</channel>
+ <summary>メンバーリストCSV出力プラグイン</summary>
+ <description>メンバーリストをCSV形式で出力するプラグインです</description>
+ <lead>
+  <name>Shinichi Urabe</name>
+  <user>urabe</user>
+  <email />
+  <active>yes</active>
+ </lead>
+ <date>2013-11-12</date>
+ <time>12:08:03</time>
+ <version>
+  <release>0.9.0</release>
+  <api>0.9.0</api>
+ </version>
+ <stability>
+  <release>beta</release>
+  <api>beta</api>
+ </stability>
+ <license>Apache 2.0</license>
+ <notes>
+First beta release.
+ </notes>
+ <contents>
+  <dir baseinstalldir="/" name="/">
+   <file baseinstalldir="/" md5sum="be4a533211b33009ab001262a8b6f4c9" name="apps/pc_backend/config/monitoring.yml" role="data" />
+   <file baseinstalldir="/" md5sum="63ded8667e025d5a99ba497b724b8dd9" name="apps/pc_backend/config/routing.yml" role="data" />
+   <file baseinstalldir="/" md5sum="dbe0d4b1c3727216d03dc4c4759e9f6e" name="apps/pc_backend/i18n/messages.ja.xml" role="data" />
+   <file baseinstalldir="/" md5sum="9e268c0cec59373f24d3fa227f148151" name="apps/pc_backend/modules/csvExport/actions/actions.class.php" role="data" />
+   <file baseinstalldir="/" md5sum="896fd88847ea507d8a5d824b199c5dcf" name="apps/pc_backend/modules/csvExport/templates/downloadSuccess.php" role="data" />
+   <file baseinstalldir="/" md5sum="a88cd256b1f8f4da273ee86b22a2f4db" name="lib/form/opCsvExportForm.class.php" role="data" />
+   <file baseinstalldir="/" md5sum="39ffc4f27adefea6a8c8eb781088daac" name="lib/model/opMemberCsvList.class.php" role="data" />
+   <file baseinstalldir="/" md5sum="cdd1fb6c281bb8e24f77615f28cccb67" name="lib/task/opCsvExportTask.class.php" role="data" />
+   <file baseinstalldir="/" md5sum="c1f4d87d41a7fdedfec2649f5d7c1a60" name="test/bootstrap/database.php" role="data" />
+   <file baseinstalldir="/" md5sum="095e80e27f5b9e19191b11303f361600" name="test/bootstrap/functional.php" role="data" />
+   <file baseinstalldir="/" md5sum="3f8d03307a7b35320628a0a5fedfb150" name="test/bootstrap/unit.php" role="data" />
+   <file baseinstalldir="/" md5sum="1aef29e725abed8d8755bff09c321054" name="test/fixtures/common/images.yml" role="data" />
+   <file baseinstalldir="/" md5sum="8fd606bec2996180c3204364375fdfe9" name="test/fixtures/common/members.yml" role="data" />
+   <file baseinstalldir="/" md5sum="5ec61d0b82f15d9a699347ef17f85755" name="test/fixtures/common/profile.yml" role="data" />
+   <file baseinstalldir="/" md5sum="9836759f38cc2b53614ed2f5e0a8134f" name="test/unit/model/opMemberCsvListTest.php" role="data" />
+   <file baseinstalldir="/" md5sum="3b83ef96387f14655fc854ddc3c6bd57" name="LICENSE" role="data" />
+   <file baseinstalldir="/" md5sum="69f0aa82a398df22291c33015cf6d33e" name="README.md" role="data" />
+  </dir>
+ </contents>
+ <dependencies>
+  <required>
+   <php>
+    <min>5.2.3</min>
+   </php>
+   <pearinstaller>
+    <min>1.4.0</min>
+   </pearinstaller>
+  </required>
+ </dependencies>
+ <phprelease />
+ <changelog>
+  <release>
+   <version>
+    <release>0.9.0</release>
+    <api>0.9.0</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <date>2013-11-12</date>
+   <license>Apache 2.0</license>
+   <notes>
+First beta release.
+   </notes>
+  </release>
+ </changelog>
+</package>
