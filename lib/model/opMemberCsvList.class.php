@@ -73,6 +73,7 @@ class opMemberCsvList
     $select .= ', m.created_at as m_created_at';
     $select .= ', m.invite_member_id as m_invite_member_id';
     $select .= ', m.is_active as m_is_active';
+    $select .= ', m.is_login_rejected as m_is_login_rejected';
     $select .= ' from member m';
     $select .= ' where m.id >= ?';
     $parameters[] = $from;
@@ -257,6 +258,7 @@ class opMemberCsvList
         'created_at',
         'invite_member_id',
         'is_active',
+        'is_login_rejected',
         'lastLogin',
         'pc_address',
         'mobile_address',
@@ -293,6 +295,7 @@ class opMemberCsvList
       $data['m_created_at'] = $memberDatas[0]['m_created_at'];
       $data['m_invite_member_id'] = $memberDatas[0]['m_invite_member_id'];
       $data['m_is_active'] = $memberDatas[0]['m_is_active'];
+      $data['m_is_login_rejected'] = $memberDatas[0]['m_is_login_rejected'];
 
       $configDatas = $memberConfigList[$memberId];
       $_configData = array();
@@ -365,7 +368,24 @@ class opMemberCsvList
           }
           else
           {
-            $profiledatas['p_'.$profileRootData['p_profile_id']] = $profileRootData['p_value'];
+            $optionId = $profileRootData['p_profile_option_id'];
+            if (is_null($optionId))
+            {
+              $profiledatas['p_'.$profileRootData['p_profile_id']] = $profileRootData['p_value'];
+            }
+            else
+            {
+              $optionValue = array();
+              $optionValue[] = $profileOptionTranslationList[$optionId];
+              if (count($optionValue) > 0)
+              {
+                $profiledatas['p_'.$profileRootData['p_profile_id']] = implode(',', $optionValue);
+              }
+              else
+              {
+                $profiledatas['p_'.$profileRootData['p_profile_id']] = $profileRootData['p_value'];
+              }
+            }
           }
           $data['profile_data'] = $profiledatas;
         }
