@@ -72,6 +72,7 @@ class opMemberCsvList
     $select .= ', m.name as m_name';
     $select .= ', m.created_at as m_created_at';
     $select .= ', m.invite_member_id as m_invite_member_id';
+    $select .= ', m.is_active as m_is_active';
     $select .= ', m.is_login_rejected as m_is_login_rejected';
     $select .= ' from member m';
     $select .= ' where m.id >= ?';
@@ -256,6 +257,7 @@ class opMemberCsvList
         'name',
         'created_at',
         'invite_member_id',
+        'is_active',
         'is_login_rejected',
         'lastLogin',
         'pc_address',
@@ -292,6 +294,7 @@ class opMemberCsvList
       $data['m_name'] = $memberDatas[0]['m_name'];
       $data['m_created_at'] = $memberDatas[0]['m_created_at'];
       $data['m_invite_member_id'] = $memberDatas[0]['m_invite_member_id'];
+      $data['m_is_active'] = $memberDatas[0]['m_is_active'];
       $data['m_is_login_rejected'] = $memberDatas[0]['m_is_login_rejected'];
 
       $configDatas = $memberConfigList[$memberId];
