@@ -13,19 +13,31 @@
   <email />
   <active>yes</active>
  </lead>
- <date>2013-11-12</date>
- <time>12:08:03</time>
+ <lead>
+  <name>kaoru nishizoe</name>
+  <user>nishizoe</user>
+  <email />
+  <active>yes</active>
+ </lead>
+ <lead>
+  <name>Imamura Mutsumi</name>
+  <user>imamura623</user>
+  <email />
+  <active>yes</active>
+ </lead>
+ <date>2016-05-24</date>
+ <time>12:43:28</time>
  <version>
-  <release>0.9.0</release>
-  <api>0.9.0</api>
+  <release>0.9.1</release>
+  <api>0.9.1</api>
  </version>
  <stability>
-  <release>beta</release>
-  <api>beta</api>
+  <release>alpha</release>
+  <api>alpha</api>
  </stability>
  <license>Apache 2.0</license>
  <notes>
-First beta release.
+alpha release.
  </notes>
  <contents>
   <dir baseinstalldir="/" name="/">
@@ -35,7 +47,7 @@ First beta release.
    <file baseinstalldir="/" md5sum="9e268c0cec59373f24d3fa227f148151" name="apps/pc_backend/modules/csvExport/actions/actions.class.php" role="data" />
    <file baseinstalldir="/" md5sum="896fd88847ea507d8a5d824b199c5dcf" name="apps/pc_backend/modules/csvExport/templates/downloadSuccess.php" role="data" />
    <file baseinstalldir="/" md5sum="a88cd256b1f8f4da273ee86b22a2f4db" name="lib/form/opCsvExportForm.class.php" role="data" />
-   <file baseinstalldir="/" md5sum="39ffc4f27adefea6a8c8eb781088daac" name="lib/model/opMemberCsvList.class.php" role="data" />
+   <file baseinstalldir="/" md5sum="24f8a5899fea538b479cae5a47d126de" name="lib/model/opMemberCsvList.class.php" role="data" />
    <file baseinstalldir="/" md5sum="cdd1fb6c281bb8e24f77615f28cccb67" name="lib/task/opCsvExportTask.class.php" role="data" />
    <file baseinstalldir="/" md5sum="c1f4d87d41a7fdedfec2649f5d7c1a60" name="test/bootstrap/database.php" role="data" />
    <file baseinstalldir="/" md5sum="095e80e27f5b9e19191b11303f361600" name="test/bootstrap/functional.php" role="data" />
@@ -73,6 +85,21 @@ First beta release.
    <license>Apache 2.0</license>
    <notes>
 First beta release.
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>0.9.1</release>
+    <api>0.9.1</api>
+   </version>
+   <stability>
+    <release>alpha</release>
+    <api>alpha</api>
+   </stability>
+   <date>2016-05-24</date>
+   <license>Apache 2.0</license>
+   <notes>
+alpha release.
    </notes>
   </release>
  </changelog>
