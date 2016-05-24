@@ -365,7 +365,24 @@ class opMemberCsvList
           }
           else
           {
-            $profiledatas['p_'.$profileRootData['p_profile_id']] = $profileRootData['p_value'];
+            $optionId = $profileRootData['p_profile_option_id'];
+            if (is_null($optionId))
+            {
+              $profiledatas['p_'.$profileRootData['p_profile_id']] = $profileRootData['p_value'];
+            }
+            else
+            {
+              $optionValue = array();
+              $optionValue[] = $profileOptionTranslationList[$optionId];
+              if (count($optionValue) > 0)
+              {
+                $profiledatas['p_'.$profileRootData['p_profile_id']] = implode(',', $optionValue);
+              }
+              else
+              {
+                $profiledatas['p_'.$profileRootData['p_profile_id']] = $profileRootData['p_value'];
+              }
+            }
           }
           $data['profile_data'] = $profiledatas;
         }
