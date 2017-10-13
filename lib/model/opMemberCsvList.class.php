@@ -348,12 +348,22 @@ class opMemberCsvList
           {
             $profileDatas = $memberProfileList[$memberId];
             $optionValue = array();
+            $existsChildProfile = false;
             foreach ($profileDatas as $profileData)
             {
               $childProfileId = $profileData['p_profile_id'];
               if ($childProfileId == $profileRootId)
               {
                 $optionId = $profileData['p_profile_option_id'];
+                $optionValue[] = $profileOptionTranslationList[$optionId];
+                $existsChildProfile = true;
+              }
+            }
+            if (!$existsChildProfile)
+            {
+              $optionId = $profileRootData['p_profile_option_id'];
+              if (isset($optionId))
+              {
                 $optionValue[] = $profileOptionTranslationList[$optionId];
               }
             }
