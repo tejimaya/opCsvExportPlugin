@@ -25,11 +25,11 @@
   <email />
   <active>yes</active>
  </lead>
- <date>2016-05-24</date>
- <time>12:43:28</time>
+ <date>2017-10-13</date>
+ <time>17:40:08</time>
  <version>
-  <release>0.9.1</release>
-  <api>0.9.1</api>
+  <release>0.9.2</release>
+  <api>0.9.2</api>
  </version>
  <stability>
   <release>alpha</release>
@@ -37,7 +37,7 @@
  </stability>
  <license>Apache 2.0</license>
  <notes>
-alpha release.
+0.9.2 alpha version release.
  </notes>
  <contents>
   <dir baseinstalldir="/" name="/">
@@ -47,7 +47,7 @@ alpha release.
    <file baseinstalldir="/" md5sum="9e268c0cec59373f24d3fa227f148151" name="apps/pc_backend/modules/csvExport/actions/actions.class.php" role="data" />
    <file baseinstalldir="/" md5sum="896fd88847ea507d8a5d824b199c5dcf" name="apps/pc_backend/modules/csvExport/templates/downloadSuccess.php" role="data" />
    <file baseinstalldir="/" md5sum="a88cd256b1f8f4da273ee86b22a2f4db" name="lib/form/opCsvExportForm.class.php" role="data" />
-   <file baseinstalldir="/" md5sum="24f8a5899fea538b479cae5a47d126de" name="lib/model/opMemberCsvList.class.php" role="data" />
+   <file baseinstalldir="/" md5sum="f373287511d5a7ab6d1c2ef6bf7f88aa" name="lib/model/opMemberCsvList.class.php" role="data" />
    <file baseinstalldir="/" md5sum="cdd1fb6c281bb8e24f77615f28cccb67" name="lib/task/opCsvExportTask.class.php" role="data" />
    <file baseinstalldir="/" md5sum="c1f4d87d41a7fdedfec2649f5d7c1a60" name="test/bootstrap/database.php" role="data" />
    <file baseinstalldir="/" md5sum="095e80e27f5b9e19191b11303f361600" name="test/bootstrap/functional.php" role="data" />
@@ -100,6 +100,21 @@ First beta release.
    <license>Apache 2.0</license>
    <notes>
 alpha release.
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>0.9.2</release>
+    <api>0.9.2</api>
+   </version>
+   <stability>
+    <release>alpha</release>
+    <api>alpha</api>
+   </stability>
+   <date>2017-10-13</date>
+   <license>Apache 2.0</license>
+   <notes>
+0.9.2 alpha version release.
    </notes>
   </release>
  </changelog>
